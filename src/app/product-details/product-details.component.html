@@ -1,0 +1,13 @@
+<div class="product-card">
+  <img class="product-image" [src]="productRepresentation.image" [attr.alt]="productRepresentation.title">
+  <div class="product-details">
+    <h3 class="product-title"> {{productRepresentation.title}}</h3>
+    <p class="product-price">$ {{productRepresentation.price}}</p>
+    <p class="product-description"> {{productRepresentation.description}} </p>
+    <p class="product-category"> {{productRepresentation.category}}</p>
+    <div class="product-rating">
+      <span class="rating-value"> {{productRepresentation.rating?.rate}} </span>
+      <span class="rating-count"> {{productRepresentation.rating?.count}} reviews</span>
+    </div>
+  </div>
+</div>
