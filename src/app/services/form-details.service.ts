@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class FormService {
+export class FormDetailsService {
   messages: Array<any> = [];
 
   constructor() {

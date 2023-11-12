@@ -1,28 +1,36 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormDetailsService } from '../services/form-details.service';
 
 @Component({
   selector: 'app-form-details',
   templateUrl: './form-details.component.html',
   styleUrls: ['./form-details.component.css'],
 })
-export class FormDetailsComponent {
+export class FormDetailsComponent implements OnInit {
   name: string = '';
   email: string = '';
   message: string = '';
   isSubmitted = false;
   messages: Array<any> = [];
 
+  // private service: FormDetailsService = Inject(FormDetailsService);
+
+  constructor(private readonly formDetailsService: FormDetailsService) {}
+
+  ngOnInit(): void {
+    this.messages = this.formDetailsService.getAllMessages();
+  }
+
   onSubmit() {
     this.isSubmitted = true;
-    let formContent = {
+    this.formDetailsService.insert({
       name: this.name,
       email: this.email,
       message: this.message,
-    };
-    this.messages.push(formContent);
+    });
   }
 
   deleteMessage(index: number) {
-    this.messages.splice(index, 1);
+    this.formDetailsService.deleteMessage(index);
   }
 }
