@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { FormDetailsComponent } from './form-details/form-details.component';
+import { AboutComponent } from './about/about.component';
 
-
-
+const routes: Routes = [
+  { path: 'home', component: FormDetailsComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'about/:username', component: AboutComponent },
+];
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
