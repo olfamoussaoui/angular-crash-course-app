@@ -32,23 +32,32 @@
     </div>
     <button type="submit" (click)="onSubmit()">Submit</button>
   </form>
-
-  <table *ngIf="isSubmitted">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Message</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let content of messages; let i = index">
-      <td> {{i}}</td>
-      <td> {{content.name}}</td>
-      <td> {{content.email}}</td>
-      <td> {{content.message}}</td>
-    </tr>
-    </tbody>
-  </table>
+  <!--
+    <table *ngIf="isSubmitted">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let content of messages; let i = index">
+        <td> {{i}}</td>
+        <td> {{content.name}}</td>
+        <td> {{content.email}}</td>
+        <td> {{content.message}}</td>
+      </tr>
+      </tbody>
+    </table>
+    -->
+  <div class="flex-container" *ngIf="isSubmitted">
+    <app-message-details
+      *ngFor="let content of messages; let i = index;"
+      [message]="content"
+      [index]="i"
+      (delete)="deleteMessage($event)"
+    ></app-message-details>
+  </div>
 </div>

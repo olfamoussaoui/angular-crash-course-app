@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-details',
@@ -20,5 +20,9 @@ export class FormDetailsComponent {
       message: this.message,
     };
     this.messages.push(formContent);
+  }
+
+  deleteMessage(index: number) {
+    this.messages.splice(index, 1);
   }
 }
